@@ -1,5 +1,6 @@
-# Serverless Drive Project
-
+# Audmg Drive
+**Serverless Media Storage and Retrieval System**
+-----
 ## Overview
 
 This project was built to learn and explore the use of AWS Lambda functions and the Serverless Framework for creating a simple, scalable cloud-based file storage system. The primary goal was to create a personal drive where users can upload, view, and download files (audio and image).
