@@ -101,12 +101,9 @@ Follow these steps to set up and deploy the project:
 
 Create a `.env` file in the root directory and populate it with necessary environment variables:
 
-dotenv
-
-Copy code
-
-`AWS_REGION=your-aws-region S3_BUCKET_NAME=your-s3-bucket-name JWT_SECRET=your-jwt-secret`
-
+```bash 
+AWS_REGION=your-aws-region S3_BUCKET_NAME=your-s3-bucket-name JWT_SECRET=your-jwt-secret
+```
 ### 4. Deploy the Application
 
 Use the Serverless Framework to deploy the application to AWS:
@@ -194,11 +191,9 @@ Make note of these endpoints as you will use them to interact with the applicati
 
 **Headers**:
 
-http
-
-Copy code
-
-`Authorization: Bearer your-jwt-token`
+```bash
+Authorization: Bearer your-jwt-token
+```
 
 **Response**:
 
