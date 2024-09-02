@@ -70,23 +70,18 @@ Before setting up and running this project, ensure you have the following prereq
 - **Node.js (v12.x or later)**: Download and install Node.js
 - **npm**: Comes bundled with Node.js.
 - **Serverless Framework**: Install globally using npm:
-    
-    bash
-    
-    Copy code
-    
-    `npm install -g serverless`
-    
+     
+    ```bash 
+        npm install -g serverless
+    ```
 - **AWS Account**: [Create an AWS account](https://aws.amazon.com/free/) if you don't have one.
 - **AWS CLI**: [Install and configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 - **AWS Credentials**: Configure your AWS credentials locally:
     
-    bash
-    
-    Copy code
-    
-    `aws configure`
-    
+   
+    ```bash
+        aws configure
+    ```
     Provide your AWS Access Key ID, Secret Access Key, default region, and output format when prompted.
 
 ## Installation and Setup
@@ -95,19 +90,16 @@ Follow these steps to set up and deploy the project:
 
 ### 1. Clone the Repository
 
-bash
-
-Copy code
-
-`git clone https://github.com/yourusername/serverless-media-storage.git cd serverless-media-storage`
+```bash
+    git clone https://github.com/Kashif-Kamran/audmg-drive.git
+```
 
 ### 2. Install Dependencies
 
-bash
 
-Copy code
-
-`npm install`
+```bash
+    npm install
+```
 
 ### 3. Configure Environment Variables
 
@@ -122,24 +114,17 @@ Copy code
 ### 4. Deploy the Application
 
 Use the Serverless Framework to deploy the application to AWS:
-
-bash
-
-Copy code
-
-`serverless deploy`
-
+```bash 
+serverless deploy
+```
 This command will package and deploy all Lambda functions, create necessary AWS resources, and output the endpoints and resource identifiers.
 
 ### 5. Verify Deployment
 
 After deployment, you will see output similar to:
-
-bash
-
-Copy code
-
-`Service Information service: serverless-media-storage stage: dev region: us-east-1 stack: serverless-media-storage-dev api keys:   None endpoints:   POST - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/signup   POST - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/login   POST - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/upload   GET  - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/retrieve functions:   signup: serverless-media-storage-dev-signup   login: serverless-media-storage-dev-login   upload: serverless-media-storage-dev-upload   retrieve: serverless-media-storage-dev-retrieve`
+```bash 
+`Service Information service: serverless-media-storage stage: dev region: us-east-1 stack: serverless-media-storage-dev api keys:   None endpoints:   POST - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/signup   POST - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/login   POST - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/upload   GET  - https://xxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/retrieve functions:   signup: serverless-media-storage-dev-signup   login: serverless-media-storage-dev-login   upload: serverless-media-storage-dev-upload   retrieve: serverless-media-storage-dev-retrieve
+```
 
 Make note of these endpoints as you will use them to interact with the application.
 
@@ -153,20 +138,14 @@ Make note of these endpoints as you will use them to interact with the applicati
 
 **Request Body**:
 
-json
-
-Copy code
-
-`{   "username": "yourusername",   "password": "yourpassword",   "email": "youremail@example.com" }`
-
+```bash 
+{   "username": "yourusername",   "password": "yourpassword",   "email": "youremail@example.com" }
+```
 **Response**:
+```bash 
 
-json
-
-Copy code
-
-`{   "message": "User registered successfully.",   "userId": "unique-user-id" }`
-
+{   "message": "User registered successfully.",   "userId": "unique-user-id" }
+```
 ### 2. User Login
 
 - **Endpoint**: `/login`
@@ -175,19 +154,17 @@ Copy code
 
 **Request Body**:
 
-json
+```bash 
 
-Copy code
-
-`{   "username": "yourusername",   "password": "yourpassword" }`
+{   "username": "yourusername",   "password": "yourpassword" }
+```
 
 **Response**:
 
-json
 
-Copy code
-
-`{   "message": "Login successful.",   "token": "jwt-token-string" }`
+```bash
+{   "message": "Login successful.",   "token": "jwt-token-string" }
+```
 
 **Note**: Use this token for authenticated requests by including it in the `Authorization` header as a Bearer token.
 
@@ -199,24 +176,20 @@ Copy code
 
 **Headers**:
 
-http
-
-Copy code
-
-`Authorization: Bearer your-jwt-token Content-Type: multipart/form-data`
-
+``` bash
+    Authorization: Bearer your-jwt-token Content-Type: multipart/form-data
+```
 **Form Data**:
 
 - `file`: The media file to upload.
 
 **Response**:
 
-json
+``` bash
 
-Copy code
+{"message": "File uploaded successfully.",   "fileUrl": "https://s3.amazonaws.com/your-s3-bucket/your-file-key" }
 
-`{   "message": "File uploaded successfully.",   "fileUrl": "https://s3.amazonaws.com/your-s3-bucket/your-file-key" }`
-
+```
 ### 4. Retrieve Media
 
 - **Endpoint**: `/retrieve`
@@ -233,12 +206,10 @@ Copy code
 
 **Response**:
 
-json
-
-Copy code
+```bash 
 
 `{   "files": [     {       "fileName": "example.jpg",       "fileUrl": "https://s3.amazonaws.com/your-s3-bucket/example.jpg",       "uploadedAt": "2023-09-01T12:34:56Z"     },     {       "fileName": "audio.mp3",       "fileUrl": "https://s3.amazonaws.com/your-s3-bucket/audio.mp3",       "uploadedAt": "2023-09-02T08:22:30Z"     }   ] }`
-
+```
 ## API Endpoints
 
 |Endpoint|Method|Description|Authentication|
@@ -277,37 +248,6 @@ Possible improvements and extensions to the project include:
 - **Improved Security**: Enhancing security measures with features like multi-factor authentication (MFA) and encryption at rest and in transit.
 - **Frontend Integration**: Developing a user-friendly frontend application using frameworks like React or Angular to interact with the backend services.
 - **CI/CD Pipeline**: Setting up continuous integration and deployment pipelines using tools like AWS CodePipeline and CodeBuild.
-
-## Contributing
-
-Contributions are welcome! If you have suggestions for improvements or new features, please follow these steps:
-
-1. **Fork the repository**.
-2. **Create a new branch** for your feature or bugfix:
-    
-    bash
-    
-    Copy code
-    
-    `git checkout -b feature/your-feature-name`
-    
-3. **Commit your changes**:
-    
-    bash
-    
-    Copy code
-    
-    `git commit -m "Add your commit message"`
-    
-4. **Push to the branch**:
-    
-    bash
-    
-    Copy code
-    
-    `git push origin feature/your-feature-name`
-    
-5. **Open a Pull Request** detailing your changes and proposed enhancements.
 
 ## License
 
