@@ -1,0 +1,30 @@
+{
+  "name": "audmg-dive-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.143",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^22.5.0",
+    "serverless-esbuild": "^1.52.1",
+    "serverless-offline": "^13.7.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/busboy": "^1.5.4",
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1681.0",
+    "busboy": "^1.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "lambda-multipart-parser": "^1.0.1",
+    "mongoose": "^8.5.3"
+  }
+}

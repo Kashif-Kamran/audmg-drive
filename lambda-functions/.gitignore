@@ -1,0 +1,4 @@
+node_modules
+.serverless
+src/config/env.config.ts
+

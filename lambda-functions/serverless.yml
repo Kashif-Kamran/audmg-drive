@@ -1,0 +1,73 @@
+service: audmg-drive
+frameworkVersion: '3'
+provider:
+  name: aws
+  runtime: nodejs18.x
+  apiGateway:
+    binaryMediaTypes:
+      - multipart/form-data
+      - image/jpeg
+      - image/png
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+functions:
+  upload-function:
+    handler: src/functions/upload/handler.main
+    timeout: 30
+    events:
+      - http:
+          path: upload
+          method: POST
+          cors: true
+          authorizer: 
+            name: authValidator
+            resultTtlInSeconds: 1
+            identitySource: method.request.header.Authorization
+            type: TOKEN
+
+  retrive-function: 
+    handler: src/functions/retrive/handler.main
+    events:
+      - http:
+          path: retrive 
+          method: GET 
+          cors: true
+          authorizer: 
+            name: authValidator
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+            type: TOKEN
+
+    
+  authentication-function: 
+    handler: src/functions/authentication/handler.main
+    events:
+      - http:
+          path: login 
+          method: POST
+          cors: true
+      - http:
+          path: signup 
+          method: POST
+          cors: true
+
+  authValidator: 
+    handler: src/functions/authValidator/handler.main
+    name: authValidator
+
+package:
+  individually: true
+
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    target: 'node18'
+    exclude: []
+    define: { 'require.resolve': undefined }
+    platform: 'node'
+    concurrency: 10
