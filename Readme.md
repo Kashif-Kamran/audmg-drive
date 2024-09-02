@@ -48,10 +48,6 @@ The application follows a serverless architecture using AWS services orchestrate
 5. **AWS SNS (Simple Notification Service)**: Sends notifications and alerts related to media processing and system events.
 6. **AWS CloudWatch**: Monitors application logs and performance metrics, aiding in debugging and system optimization.
 
-**Architecture Diagram**:
-
-[Include an architecture diagram here if possible to visualize the components and their interactions.]
-
 ## Technologies Used
 
 - **AWS Lambda**: For running serverless functions that handle application logic.
